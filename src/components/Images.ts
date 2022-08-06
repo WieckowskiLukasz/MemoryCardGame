@@ -19,6 +19,22 @@ import Image18 from '../assets/cards/NateScapes-18.jpg';
 import Image19 from '../assets/cards/NateScapes-19.jpg';
 import Image20 from '../assets/cards/NateScapes-20.jpg';
 
-const images = [Image1, Image2, Image3, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20];
+interface imagesArray {
+	Image: string;
+  ID: number;
+}
+
+const images: imagesArray[] = [
+  {Image: Image1, ID: 1}, {Image: Image1, ID: 1}, 
+  {Image: Image2, ID: 2}, {Image: Image2, ID: 2},
+  {Image: Image3, ID: 3}, {Image: Image3, ID: 3},
+  {Image: Image4, ID: 4}, {Image: Image4, ID: 4},
+  {Image: Image5, ID: 5}, {Image: Image5, ID: 5},
+  {Image: Image6, ID: 6}, {Image: Image6, ID: 6},
+  {Image: Image7, ID: 7}, {Image: Image7, ID: 7},
+  {Image: Image8, ID: 8}, {Image: Image8, ID: 8},
+  {Image: Image9, ID: 9}, {Image: Image9, ID: 9}, 
+  {Image: Image10, ID: 10}, {Image: Image10, ID: 10}
+];
 
 export default images;

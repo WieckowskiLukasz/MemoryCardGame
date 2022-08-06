@@ -22,8 +22,8 @@
   align-items: flex-start;
   &__card-container{
     transform: rotateX(20deg);
-    margin-top: 150px;
-    width: 80%;
+    margin-top: 70px;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -47,7 +47,7 @@
     height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    &:hover{
+    &--displayed{
       transform: rotateY(180deg);
     }
   }
