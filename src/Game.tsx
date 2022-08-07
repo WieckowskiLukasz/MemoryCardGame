@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import bg from './assets/wood4.jpg';
 import Cards from './components/Cards.tsx';
+import Scoreboard from './components/Scoreboard.tsx';
 import {createCardList} from './components/CreateCardList.ts';
 import {CardListInterface} from './components/Interfaces';
 
@@ -12,6 +13,9 @@ export default function Game() {
   const [activeSecondCardID, setActiveSecondCardID] = useState<number | null>(null);
   const [numberOfSelectedCards, setNumberOfSelectedCards] = useState<number>(0);
   const [gameboardBlocked, setGameboardBlocked] = useState<boolean>(false);
+  const [matchedPairs, setMatchedPairs] = useState<number>(0);
+  const [turns, setTurns] = useState<number>(0);
+
 
   useEffect(()=>{
     setCardList(createCardList);
@@ -40,6 +44,7 @@ export default function Game() {
     }
     else if(numberOfSelectedCards === 1){
       setNumberOfSelectedCards(2);
+      setTurns(prevState => prevState + 1);
       setGameboardBlocked(true);
       if(activeSecondCardImageID !== null){
         setActiveFirstCardID(cardNumber);
@@ -68,6 +73,9 @@ export default function Game() {
     let updateCardList: CardListInterface[];
     if(numberOfSelectedCards === 2){
       if(activeFirstCardImageID === activeSecondCardImageID){
+        
+        setMatchedPairs(prevState => prevState + 1);
+
         updateCardList = cardList.map(element => {
           if(element.imageID === activeFirstCardImageID){
             element.guessed = true;
@@ -94,6 +102,13 @@ export default function Game() {
     /> 
     : null
 
+  const displayScoreboard = cardList ? 
+    <Scoreboard
+      matchedPairs={matchedPairs}
+      turns={turns}
+    /> 
+    : null
+
   return (
     <>
       <div className='game'>
@@ -104,6 +119,7 @@ export default function Game() {
             filter: `brightness(80%)`,
           }}>
         </div>
+        {displayScoreboard}
         <div className='game__card-container'>
           {displayCardList}
         </div>

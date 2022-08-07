@@ -8,6 +8,12 @@ interface CardListInterface {
   handleCard: any;
 };
 
+interface ScoreboardInterface {
+  matchedPairs: number;
+  turns: number;
+};
+
 export{
   CardListInterface,
+  ScoreboardInterface,
 }
