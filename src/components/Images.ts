@@ -34,7 +34,9 @@ const images: imagesArray[] = [
   {Image: Image7, ID: 7}, {Image: Image7, ID: 7},
   {Image: Image8, ID: 8}, {Image: Image8, ID: 8},
   {Image: Image9, ID: 9}, {Image: Image9, ID: 9}, 
-  {Image: Image10, ID: 10}, {Image: Image10, ID: 10}
+  {Image: Image10, ID: 10}, {Image: Image10, ID: 10},
+  {Image: Image11, ID: 11}, {Image: Image11, ID: 11},
+  {Image: Image12, ID: 12}, {Image: Image12, ID: 12},
 ];
 
 export default images;

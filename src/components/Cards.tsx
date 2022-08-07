@@ -3,9 +3,10 @@ import Card from '../components/Card.tsx';
 
 interface CardsProps {
   cardList: any[];
+  handleCard: any;
 }
 
-export default function Cards({cardList}: CardsProps) {
+export default function Cards({cardList, handleCard}) {
 
   const cardsArray = cardList.map((element, index)=>
     <Card
@@ -13,10 +14,12 @@ export default function Cards({cardList}: CardsProps) {
       cardID = {element.cardID}
       imageID = {element.imageID}
       imageSrc = {element.imageSrc}
-      quessed = {element.guessed}
-      displayed = {element.displayed}
+      guessed = {element.guessed}
+      exposed = {element.exposed}
+      handleCard = {handleCard}
     />
   );
+
 
   return (
     <>

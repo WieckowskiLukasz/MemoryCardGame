@@ -1,7 +1,7 @@
 import images from '../components/Images.ts';
 
-export const createCardList = () =>{
-  const numberOfCards: number = 20;
+export const createCardList = () => {
+  const numberOfCards: number = 24;
 
   let cards: any[] = [];
 
@@ -25,8 +25,8 @@ export const createCardList = () =>{
       imageIndex: null,
       imageID: null,
       imageSrc: '',
-      quessed: false,
-      exposed: true,
+      guessed: false,
+      exposed: false,
     }
     cards.push(oneCard);
   }
@@ -45,6 +45,5 @@ export const createCardList = () =>{
     element.imageSrc = images[random].Image;
   });
 
-  console.log(cards);
   return(cards);
 }
