@@ -6,7 +6,7 @@ import {createCardList} from './components/CreateCardList.ts';
 import {CardListInterface} from './components/Interfaces';
 
 export default function Game() {
-  const [cardList, setCardList] = useState<CardListInterface[]>();
+  const [cardList, setCardList] = useState<CardListInterface[]>([]);
   const [activeFirstCardImageID, setActiveFirstCardImageID] = useState<number | null>(null);
   const [activeFirstCardID, setActiveFirstCardID] = useState<number | null>(null);
   const [activeSecondCardImageID, setActiveSecondCardImageID] = useState<number | null>(null);
@@ -70,20 +70,20 @@ export default function Game() {
   };
   
   const checkCards = () =>{
-    let updateCardList: CardListInterface[];
+    let updatedCardList: CardListInterface[];
     if(numberOfSelectedCards === 2){
       if(activeFirstCardImageID === activeSecondCardImageID){
         
         setMatchedPairs(prevState => prevState + 1);
 
-        updateCardList = cardList.map(element => {
+        updatedCardList = cardList.map(element => {
           if(element.imageID === activeFirstCardImageID){
             element.guessed = true;
           }
           return element;
         });
       }else{
-        updateCardList = cardList.map(element => {
+        updatedCardList = cardList.map(element => {
           if(element.cardID === activeFirstCardID || element.cardID === activeSecondCardID){
             element.exposed = false;
           }
@@ -91,7 +91,7 @@ export default function Game() {
         });
       }
       setGameboardBlocked(false);
-      setCardList(updateCardList);
+      setCardList(updatedCardList);
     }
   }
 

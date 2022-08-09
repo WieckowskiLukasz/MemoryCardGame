@@ -1,0 +1,121 @@
+@import './breakpoints.scss';
+@import './variables.scss';
+
+.header{
+  min-width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  background-color: none;
+  z-index: 2;
+  background-image: $header-bgc;
+  transition: .3s;
+  @include breakpointMax(sm){
+    transition: none;
+    height: 60px;
+  }
+  &__content{
+    width: 100vw;
+    max-width: 2500px;
+    height: 60px;
+    justify-content: space-between;
+    display: flex;
+  }
+}
+
+.logo{
+  z-index: 2;
+  padding: 10px;
+  width: 200px;
+  transition: .3s;
+  @include breakpointMax(sm){
+    width: 120px;
+  }
+}
+
+.navigation{
+  &__links{
+    transition: .5s;
+    margin-right: 20px;
+    display: flex;
+    &--mobile{
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      top: 60px;
+      left: -100vw;
+      width: 0;
+      height: 0;
+      box-shadow: 2px 2px 2px 0px rgba(66, 68, 90, 1);
+      padding: 20px 10px 0 10px;
+    }
+    &--active{
+      color: white !important; 
+      opacity: 100%;
+      position: fixed;
+      transform: translateX(20px);
+      top: 60px;
+      left: -20px;
+      width: 80vw;
+      height: 100vh;
+      background-color: dimgray;
+      @include breakpointMax(xxxs){
+        width: 95vw;
+      }
+      @include breakpointMin(md){
+        display: none;
+      }
+    }
+  }
+  &__link{
+    z-index: 2;
+    min-width: 70px;
+    list-style:none;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    padding: 15px;
+    color: $nav-link-color;
+    cursor: pointer;
+    transition: .3s all;
+    @include breakpointMax(md){
+      margin-left: -25px;
+      padding: 20px;
+    }
+    :hover{
+      color: $nav-link-color-hover;
+    }
+    &--mobile{
+      width: 100%;
+      text-align: left;
+      padding-left: 45px;
+      display: block;
+      min-width: 100%;
+      a{
+        display: block;
+        min-width: 100%;
+      }
+    }        
+  }
+  &__hamburger{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 25px;
+    display: block;
+    cursor: pointer;
+    color: $nav-link-color;
+    @include breakpointMin(md) {
+      display: none;
+    }
+  }   
+}
+
+
+
+
+
