@@ -4,6 +4,7 @@ import Cards from './components/Cards.tsx';
 import Scoreboard from './components/Scoreboard.tsx';
 import {createCardList} from './components/CreateCardList.ts';
 import {CardListInterface} from './components/Interfaces';
+import Header from './layouts/Header.tsx';
 
 export default function Game() {
   const [cardList, setCardList] = useState<CardListInterface[]>([]);
@@ -15,7 +16,25 @@ export default function Game() {
   const [gameboardBlocked, setGameboardBlocked] = useState<boolean>(false);
   const [matchedPairs, setMatchedPairs] = useState<number>(0);
   const [turns, setTurns] = useState<number>(0);
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [gameActive, setGameActive] = useState(false);
 
+  useEffect(() => {
+    if(gameActive){
+      const interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [gameActive]);
+
+  useEffect(() => {
+    if(seconds === 60){
+      setSeconds(0);
+      setMinutes(seconds => seconds + 1);
+    }
+  }, [seconds]);
 
   useEffect(()=>{
     setCardList(createCardList);
@@ -23,16 +42,51 @@ export default function Game() {
 
   useEffect(()=>{
     if(cardList){
-      setTimeout(checkCards, 1200);
+      const timer = setTimeout(checkCards, 1200);
+      return () => clearTimeout(timer);
     }
   },[numberOfSelectedCards])
+
+  useEffect(()=>{
+    if(numberOfSelectedCards > 0){
+      setGameActive(true);
+    }
+  },[numberOfSelectedCards])
+
+  const newGame = () =>{
+    coverCards();
+    const timer = setTimeout(resetParameters, 1200);
+    return () => clearTimeout(timer);
+  }
+
+  const resetParameters = () =>{
+    setCardList(createCardList);
+    setActiveFirstCardImageID(null);
+    setActiveFirstCardID(null);
+    setActiveSecondCardImageID(null);
+    setActiveSecondCardID(null);
+    setNumberOfSelectedCards(0);
+    setGameboardBlocked(false);
+    setMatchedPairs(0);
+    setTurns(0);
+    setSeconds(0);
+    setMinutes(0);
+    setGameActive(false);
+  }
+
+  const coverCards = () =>{
+    const updatedCardList: CardListInterface[] = cardList.map(element => {
+      element.exposed = false;
+      return element;
+  });
+    setCardList(updatedCardList);
+  };
 
   const revealTheCard = (cardNumber: number) =>{
     const updatedCardList: CardListInterface[] = cardList.map(element => {
       if(element.cardID === cardNumber) element.exposed = true;
       return element;
-    });
-
+  });
     setCardList(updatedCardList);
   };
 
@@ -63,17 +117,14 @@ export default function Game() {
   }
 
   const handleCard = (cardNumber: number, imageNumber: number) =>{
-    if(!gameboardBlocked){
       revealTheCard(cardNumber);
       setStateData(cardNumber, imageNumber);
-    }
   };
   
   const checkCards = () =>{
     let updatedCardList: CardListInterface[];
     if(numberOfSelectedCards === 2){
       if(activeFirstCardImageID === activeSecondCardImageID){
-        
         setMatchedPairs(prevState => prevState + 1);
 
         updatedCardList = cardList.map(element => {
@@ -99,6 +150,7 @@ export default function Game() {
     <Cards
       cardList={cardList}
       handleCard={handleCard}
+      gameboardBlocked={gameboardBlocked}
     /> 
     : null
 
@@ -106,11 +158,16 @@ export default function Game() {
     <Scoreboard
       matchedPairs={matchedPairs}
       turns={turns}
+      seconds={seconds}
+      minutes={minutes}
     /> 
     : null
 
   return (
     <>
+      <Header
+        newGame={newGame}
+      />
       <div className='game'>
         <div 
           className='background-image'
@@ -123,6 +180,7 @@ export default function Game() {
         <div className='game__card-container'>
           {displayCardList}
         </div>
+        
       </div>
     </>
   )

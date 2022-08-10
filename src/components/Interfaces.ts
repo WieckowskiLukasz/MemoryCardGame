@@ -5,12 +5,13 @@ interface CardListInterface {
   imageSrc: string;
   guessed: boolean;
   exposed: boolean;
-  handleCard: any;
 };
 
 interface ScoreboardInterface {
   matchedPairs: number;
   turns: number;
+  seconds: number;
+  minutes: number;
 };
 
 export{

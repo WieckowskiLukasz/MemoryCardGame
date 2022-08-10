@@ -6,7 +6,7 @@ interface CardsProps {
   handleCard: any;
 }
 
-export default function Cards({cardList, handleCard}) {
+export default function Cards({cardList, handleCard, gameboardBlocked}) {
 
   const cardsArray = cardList.map((element, index)=>
     <Card
@@ -17,6 +17,7 @@ export default function Cards({cardList, handleCard}) {
       guessed = {element.guessed}
       exposed = {element.exposed}
       handleCard = {handleCard}
+      gameboardBlocked={gameboardBlocked}
     />
   );
 
