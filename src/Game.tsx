@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import bg from './assets/wood4.jpg';
 import Cards from './components/Cards.tsx';
-import Scoreboard from './components/Scoreboard.tsx';
+import Scoreboard from './layouts/Scoreboard.tsx';
 import {createCardList} from './components/CreateCardList.ts';
 import {CardListInterface} from './components/Interfaces';
 import Header from './layouts/Header.tsx';
+import Score from './components/Score.ts';
+import {coverAllCards, coverCards, revealCard, guessedCard} from './components/HandleFlipCard.ts';
 
 export default function Game() {
   const [cardList, setCardList] = useState<CardListInterface[]>([]);
@@ -16,9 +18,11 @@ export default function Game() {
   const [gameboardBlocked, setGameboardBlocked] = useState<boolean>(false);
   const [matchedPairs, setMatchedPairs] = useState<number>(0);
   const [turns, setTurns] = useState<number>(0);
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [gameActive, setGameActive] = useState(false);
+  const [seconds, setSeconds] = useState<number>(0);
+  const [minutes, setMinutes] = useState<number>(0);
+  const [gameActive, setGameActive] = useState<boolean>(false);
+  const [endGame, setEndGame] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
     if(gameActive){
@@ -26,38 +30,41 @@ export default function Game() {
         setSeconds(seconds => seconds + 1);
       }, 1000);
       return () => clearInterval(interval);
-    }
-  }, [gameActive]);
+    };
+  },[gameActive]);
+  useEffect(()=> setCardList(createCardList),[]);
+  useEffect(()=> updateTime(),[seconds]);
+  useEffect(()=> checkNumberOfCards(),[numberOfSelectedCards]);
+  useEffect(()=> blockGameboard(),[numberOfSelectedCards]);
+  useEffect(()=> handleGameStatus(),[minutes, matchedPairs]);
 
-  useEffect(() => {
-    if(seconds === 60){
-      setSeconds(0);
-      setMinutes(seconds => seconds + 1);
-    }
-  }, [seconds]);
-
-  useEffect(()=>{
-    setCardList(createCardList);
-  },[])
-
-  useEffect(()=>{
-    if(cardList){
-      const timer = setTimeout(checkCards, 1200);
-      return () => clearTimeout(timer);
-    }
-  },[numberOfSelectedCards])
-
-  useEffect(()=>{
-    if(numberOfSelectedCards > 0){
-      setGameActive(true);
-    }
-  },[numberOfSelectedCards])
+  const updateTime = () =>{
+    if(seconds === 60){setSeconds(0); setMinutes(seconds => seconds + 1);};
+  };
 
   const newGame = () =>{
-    coverCards();
+    setCardList(coverAllCards(cardList));
     const timer = setTimeout(resetParameters, 1200);
     return () => clearTimeout(timer);
-  }
+  };
+
+  const blockGameboard = () =>{
+    if(numberOfSelectedCards > 0 && !gameboardBlocked) setGameActive(true);
+  };
+
+  const handleGameStatus = () =>{
+    if(matchedPairs === 12) {setGameActive(false); setGameboardBlocked(true); setEndGame(true);};
+    if(minutes >= 10) {setGameActive(false); setGameboardBlocked(true); setEndGame(true);};
+  };
+
+  const checkNumberOfCards = () =>{
+    if(numberOfSelectedCards === 2) checkPairTimeout();
+  };
+
+  const checkPairTimeout = () =>{
+    const timer = setTimeout(checkPair, 1200);
+    return () => clearTimeout(timer);
+  };
 
   const resetParameters = () =>{
     setCardList(createCardList);
@@ -72,79 +79,53 @@ export default function Game() {
     setSeconds(0);
     setMinutes(0);
     setGameActive(false);
-  }
-
-  const coverCards = () =>{
-    const updatedCardList: CardListInterface[] = cardList.map(element => {
-      element.exposed = false;
-      return element;
-  });
-    setCardList(updatedCardList);
-  };
-
-  const revealTheCard = (cardNumber: number) =>{
-    const updatedCardList: CardListInterface[] = cardList.map(element => {
-      if(element.cardID === cardNumber) element.exposed = true;
-      return element;
-  });
-    setCardList(updatedCardList);
+    setEndGame(false);
+    setScore(0);
   };
 
   const setStateData = (cardNumber: number, imageNumber: number) =>{
-    if(numberOfSelectedCards === 0){
-      setNumberOfSelectedCards(1);
-      setActiveFirstCardID(cardNumber);
-      setActiveFirstCardImageID(imageNumber);
-    }
-    else if(numberOfSelectedCards === 1){
-      setNumberOfSelectedCards(2);
-      setTurns(prevState => prevState + 1);
-      setGameboardBlocked(true);
-      if(activeSecondCardImageID !== null){
+    switch (numberOfSelectedCards) {
+      case 0:
+        setNumberOfSelectedCards(1);
         setActiveFirstCardID(cardNumber);
         setActiveFirstCardImageID(imageNumber);
-      }
-      else{
+          break;
+      case 1:
+        setNumberOfSelectedCards(2);
+        setTurns(prevState => prevState + 1);
+        setGameboardBlocked(true);
+        if(activeSecondCardImageID !== null){
+          setActiveFirstCardID(cardNumber);
+          setActiveFirstCardImageID(imageNumber);
+        }
+        else{
+          setActiveSecondCardID(cardNumber);
+          setActiveSecondCardImageID(imageNumber);
+        };
+          break;
+      case 2:
         setActiveSecondCardID(cardNumber);
         setActiveSecondCardImageID(imageNumber);
-      }
-    }
-    else if(numberOfSelectedCards === 2){
-      setActiveSecondCardID(cardNumber);
-      setActiveSecondCardImageID(imageNumber);
-      setNumberOfSelectedCards(1);
-    }
-  }
+        setNumberOfSelectedCards(1);;
+          break;
+    };
+  };
 
   const handleCard = (cardNumber: number, imageNumber: number) =>{
-      revealTheCard(cardNumber);
-      setStateData(cardNumber, imageNumber);
+    setCardList(revealCard(cardNumber, cardList));
+    setStateData(cardNumber, imageNumber);
   };
   
-  const checkCards = () =>{
-    let updatedCardList: CardListInterface[];
-    if(numberOfSelectedCards === 2){
-      if(activeFirstCardImageID === activeSecondCardImageID){
-        setMatchedPairs(prevState => prevState + 1);
-
-        updatedCardList = cardList.map(element => {
-          if(element.imageID === activeFirstCardImageID){
-            element.guessed = true;
-          }
-          return element;
-        });
-      }else{
-        updatedCardList = cardList.map(element => {
-          if(element.cardID === activeFirstCardID || element.cardID === activeSecondCardID){
-            element.exposed = false;
-          }
-          return element;
-        });
-      }
-      setGameboardBlocked(false);
-      setCardList(updatedCardList);
-    }
-  }
+  const checkPair = () =>{
+    if(activeFirstCardImageID === activeSecondCardImageID){
+      setMatchedPairs(prevState => prevState + 1);
+      setScore(prevState => prevState + Score(minutes, matchedPairs, turns));
+      setCardList(guessedCard(cardList, activeFirstCardImageID));
+    }else{
+      setCardList(coverCards(cardList, activeFirstCardID, activeSecondCardID));
+    };
+    setGameboardBlocked(false);
+  };
 
   const displayCardList = cardList ? 
     <Cards
@@ -160,6 +141,7 @@ export default function Game() {
       turns={turns}
       seconds={seconds}
       minutes={minutes}
+      score={score}
     /> 
     : null
 
@@ -183,5 +165,5 @@ export default function Game() {
         
       </div>
     </>
-  )
-}
+  );
+};

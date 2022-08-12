@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from '../components/Card.tsx';
+import {CardsInterface} from '../components/Interfaces';
 
-interface CardsProps {
-  cardList: any[];
-  handleCard: any;
-}
-
-export default function Cards({cardList, handleCard, gameboardBlocked}) {
+export default function Cards({cardList, handleCard, gameboardBlocked}:CardsInterface) {
 
   const cardsArray = cardList.map((element, index)=>
     <Card
@@ -21,10 +17,9 @@ export default function Cards({cardList, handleCard, gameboardBlocked}) {
     />
   );
 
-
   return (
     <>
       {cardsArray}
     </>
-  )
-}
+  );
+};

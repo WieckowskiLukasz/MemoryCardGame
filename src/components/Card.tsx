@@ -1,16 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {CardListInterface} from '../components/Interfaces';
-
-interface CardInterface {
-  cardID: number;
-  imageIndex: number;
-  imageID: number;
-  imageSrc: string;
-  guessed: boolean;
-  exposed: boolean;
-  handleCard: (cardID: number, imageID: number) => void;
-  gameboardBlocked: boolean;
-};
+import React from 'react';
+import {CardInterface} from '../components/Interfaces';
 
 export default function Card({cardID, imageIndex, imageID, imageSrc, guessed, exposed, handleCard, gameboardBlocked}: CardInterface) {
 
@@ -22,12 +11,20 @@ export default function Card({cardID, imageIndex, imageID, imageSrc, guessed, ex
     'game__card game__card--exposed' 
     : 'game__card';
 
+  const cursor = gameboardBlocked || exposed ? 
+  'default' 
+  : 'pointer';
+
   const cardOnCLick = () => {
     if(!gameboardBlocked) handleCard(cardID, imageID);
   };
 
   return (
-    <div className={flipCardClassName} onClick={()=> cardOnCLick()}>
+    <div 
+      className={flipCardClassName} 
+      onClick={()=> cardOnCLick()}
+      style={{cursor:`${cursor}`}}
+    >
       <div className={cardClassName}>
         <div className='game__card-front'></div>
         <div 

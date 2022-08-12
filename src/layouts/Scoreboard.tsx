@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScoreboardInterface } from './Interfaces';
+import { ScoreboardInterface } from '../components/Interfaces';
 
-export default function Scoreboard({matchedPairs, turns, seconds, minutes}:ScoreboardInterface) {
+export default function Scoreboard({matchedPairs, turns, seconds, minutes, score}:ScoreboardInterface) {
 
   const secondsFormat  = (seconds < 10) ? `0${seconds}` : seconds;
   const minutesFormat  = (minutes < 10) ? `0${minutes}` : minutes;
@@ -21,7 +21,7 @@ export default function Scoreboard({matchedPairs, turns, seconds, minutes}:Score
           Matched: {matchedPairs}
         </div>
         <div className='scoreboard__item'>
-          Record: 
+          Score: {score}
         </div>
       </div>
     </>
