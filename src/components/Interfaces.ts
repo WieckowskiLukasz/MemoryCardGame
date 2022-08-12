@@ -32,9 +32,16 @@ interface ScoreboardInterface {
   score: number;
 };
 
+interface EndGamePopUpInterface {
+  endTime: false;
+  score: number;
+  newGame: () => void;
+};
+
 export{
   CardListInterface,
   CardsInterface,
   CardInterface,
   ScoreboardInterface,
+  EndGamePopUpInterface,
 };

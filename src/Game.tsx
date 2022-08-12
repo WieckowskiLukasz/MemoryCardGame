@@ -5,6 +5,7 @@ import Scoreboard from './layouts/Scoreboard.tsx';
 import {createCardList} from './components/CreateCardList.ts';
 import {CardListInterface} from './components/Interfaces';
 import Header from './layouts/Header.tsx';
+import EndGamePopUp from './layouts/EndGamePopUp.tsx';
 import Score from './components/Score.ts';
 import {coverAllCards, coverCards, revealCard, guessedCard} from './components/HandleFlipCard.ts';
 
@@ -21,6 +22,7 @@ export default function Game() {
   const [seconds, setSeconds] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
   const [gameActive, setGameActive] = useState<boolean>(false);
+  const [endTime, setEndTime] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
 
@@ -54,7 +56,7 @@ export default function Game() {
 
   const handleGameStatus = () =>{
     if(matchedPairs === 12) {setGameActive(false); setGameboardBlocked(true); setEndGame(true);};
-    if(minutes >= 10) {setGameActive(false); setGameboardBlocked(true); setEndGame(true);};
+    if(minutes >= 10) {setGameActive(false); setGameboardBlocked(true); setEndGame(true); setEndTime(false);};
   };
 
   const checkNumberOfCards = () =>{
@@ -80,6 +82,7 @@ export default function Game() {
     setMinutes(0);
     setGameActive(false);
     setEndGame(false);
+    setEndTime(false);
     setScore(0);
   };
 
@@ -145,8 +148,17 @@ export default function Game() {
     /> 
     : null
 
+    const endGamePopUp = endGame ? 
+    <EndGamePopUp
+      endTime={endTime}
+      score={score}
+      newGame={newGame}
+    /> 
+    : null
+
   return (
     <>
+      {endGamePopUp}
       <Header
         newGame={newGame}
       />
@@ -162,7 +174,6 @@ export default function Game() {
         <div className='game__card-container'>
           {displayCardList}
         </div>
-        
       </div>
     </>
   );

@@ -6,7 +6,7 @@ export default function Scoreboard({matchedPairs, turns, seconds, minutes, score
   const secondsFormat  = (seconds < 10) ? `0${seconds}` : seconds;
   const minutesFormat  = (minutes < 10) ? `0${minutes}` : minutes;
 
-  const time = `00: ${minutesFormat} : ${secondsFormat}`;
+  const time = `00 : ${minutesFormat} : ${secondsFormat}`;
 
   return (
     <>
