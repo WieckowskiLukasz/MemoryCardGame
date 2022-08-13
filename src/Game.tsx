@@ -6,6 +6,7 @@ import {createCardList} from './components/CreateCardList.ts';
 import {CardListInterface} from './components/Interfaces';
 import Header from './layouts/Header.tsx';
 import EndGamePopUp from './layouts/EndGamePopUp.tsx';
+import About from './layouts/AboutPopUp.tsx';
 import Score from './components/Score.ts';
 import {coverAllCards, coverCards, revealCard, guessedCard} from './components/HandleFlipCard.ts';
 
@@ -18,13 +19,15 @@ export default function Game() {
   const [numberOfSelectedCards, setNumberOfSelectedCards] = useState<number>(0);
   const [gameboardBlocked, setGameboardBlocked] = useState<boolean>(false);
   const [matchedPairs, setMatchedPairs] = useState<number>(0);
-  const [turns, setTurns] = useState<number>(0);
+  const [moves, setMoves] = useState<number>(0);
   const [seconds, setSeconds] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
   const [gameActive, setGameActive] = useState<boolean>(false);
   const [endTime, setEndTime] = useState<boolean>(false);
-  const [endGame, setEndGame] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
+  const [aboutActive, setAboutActive] = useState<boolean>(false);
+  const [endGameActive, setEndGameActive] = useState<boolean>(false);
+  const [newGameAnimation, setNewGameAnimation] = useState<boolean>(false);
 
   useEffect(() => {
     if(gameActive){
@@ -45,6 +48,7 @@ export default function Game() {
   };
 
   const newGame = () =>{
+    setNewGameAnimation(true);
     setCardList(coverAllCards(cardList));
     const timer = setTimeout(resetParameters, 1200);
     return () => clearTimeout(timer);
@@ -55,8 +59,8 @@ export default function Game() {
   };
 
   const handleGameStatus = () =>{
-    if(matchedPairs === 12) {setGameActive(false); setGameboardBlocked(true); setEndGame(true);};
-    if(minutes >= 10) {setGameActive(false); setGameboardBlocked(true); setEndGame(true); setEndTime(false);};
+    if(matchedPairs === 12) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true);};
+    if(minutes >= 5) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true); setEndTime(true);};
   };
 
   const checkNumberOfCards = () =>{
@@ -77,13 +81,14 @@ export default function Game() {
     setNumberOfSelectedCards(0);
     setGameboardBlocked(false);
     setMatchedPairs(0);
-    setTurns(0);
+    setMoves(0);
     setSeconds(0);
     setMinutes(0);
     setGameActive(false);
-    setEndGame(false);
+    setEndGameActive(false);
     setEndTime(false);
     setScore(0);
+    setNewGameAnimation(false);
   };
 
   const setStateData = (cardNumber: number, imageNumber: number) =>{
@@ -95,7 +100,7 @@ export default function Game() {
           break;
       case 1:
         setNumberOfSelectedCards(2);
-        setTurns(prevState => prevState + 1);
+        setMoves(prevState => prevState + 1);
         setGameboardBlocked(true);
         if(activeSecondCardImageID !== null){
           setActiveFirstCardID(cardNumber);
@@ -122,7 +127,7 @@ export default function Game() {
   const checkPair = () =>{
     if(activeFirstCardImageID === activeSecondCardImageID){
       setMatchedPairs(prevState => prevState + 1);
-      setScore(prevState => prevState + Score(minutes, matchedPairs, turns));
+      setScore(prevState => prevState + Score(minutes, moves));
       setCardList(guessedCard(cardList, activeFirstCardImageID));
     }else{
       setCardList(coverCards(cardList, activeFirstCardID, activeSecondCardID));
@@ -130,6 +135,9 @@ export default function Game() {
     setGameboardBlocked(false);
   };
 
+  const handleAbout = (value) => setAboutActive(value);
+  const handleEndGamePopUp = (value) => setEndGameActive(value);
+  
   const displayCardList = cardList ? 
     <Cards
       cardList={cardList}
@@ -137,30 +145,40 @@ export default function Game() {
       gameboardBlocked={gameboardBlocked}
     /> 
     : null
-
   const displayScoreboard = cardList ? 
     <Scoreboard
       matchedPairs={matchedPairs}
-      turns={turns}
+      moves={moves}
       seconds={seconds}
       minutes={minutes}
       score={score}
     /> 
     : null
-
-    const endGamePopUp = endGame ? 
+  const endGamePopUp = endGameActive ? 
     <EndGamePopUp
       endTime={endTime}
       score={score}
       newGame={newGame}
+      handleEndGamePopUp={handleEndGamePopUp}
     /> 
     : null
+  const aboutPopUp = aboutActive ? 
+    <About
+      handleAbout={handleAbout}
+    /> 
+    : null
+  const newGameDiv = newGameAnimation ?
+    <><div className='new-game'></div></>
+    : null;
 
   return (
     <>
+      {newGameDiv}
       {endGamePopUp}
+      {aboutPopUp}
       <Header
         newGame={newGame}
+        handleAbout={handleAbout}
       />
       <div className='game'>
         <div 

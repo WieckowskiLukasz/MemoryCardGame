@@ -26,7 +26,7 @@ interface CardInterface {
 
 interface ScoreboardInterface {
   matchedPairs: number;
-  turns: number;
+  moves: number;
   seconds: number;
   minutes: number;
   score: number;
@@ -36,6 +36,16 @@ interface EndGamePopUpInterface {
   endTime: false;
   score: number;
   newGame: () => void;
+  handleEndGamePopUp: (value: boolean) => void;
+};
+
+interface AboutPopUpInterface {
+  handleAbout: (value: boolean) => void;
+};
+
+interface HeaderInterface {
+  newGame: () => void;
+  handleAbout: (value: boolean) => void;
 };
 
 export{
@@ -44,4 +54,6 @@ export{
   CardInterface,
   ScoreboardInterface,
   EndGamePopUpInterface,
+  AboutPopUpInterface,
+  HeaderInterface,
 };

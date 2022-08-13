@@ -3,6 +3,7 @@ import {CardListInterface} from '../components/Interfaces';
 export const coverAllCards = (cardList: CardListInterface[]) =>{
   const updatedCardList: CardListInterface[] = cardList.map(element => {
     element.exposed = false;
+    element.guessed = false;
     return element;
   });
   

@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {EndGamePopUpInterface} from '../components/Interfaces';
 
-export default function EndGamePopUp({endTime, score, newGame}:EndGamePopUpInterface) {
-
-  const [popUpActive, setPopUpActive] = useState<boolean>(true);
+export default function EndGamePopUp({endTime, score, newGame, handleEndGamePopUp}: EndGamePopUpInterface) {
 
   const header = endTime ?
-    'Unfortunately, the game time is up.'
+    'Unfortunately, the game time is up!'
     : 'Congratulations! You found all the pairs.';
 
   return (
-    popUpActive ? 
     <div className='end-game-pop-up'>
       <div className='end-game-pop-up__container'>
         <div className="end-game-pop-up__header">
@@ -43,13 +40,12 @@ export default function EndGamePopUp({endTime, score, newGame}:EndGamePopUpInter
           </button>
           <button 
             className='end-game-pop-up__button'
-            onClick={()=> setPopUpActive(false)}
+            onClick={()=> handleEndGamePopUp(false)}
           >
             <i className="las la-times"></i>Exit
           </button>
         </div>
       </div>
     </div>
-    : null
   );
 };

@@ -1,7 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import logo  from '../assets/logo/whiteLogo.svg';
+import {HeaderInterface} from '../components/Interfaces';
 
-const Header = (props) =>{
+const Header = ({newGame, handleAbout}: HeaderInterface) =>{
   const [menuMobileActive, setMenuMobileActive] = useState(false);
   const [pageMobile, setpageMobile] = useState(false);
 
@@ -43,13 +44,14 @@ const Header = (props) =>{
         <nav className='navigation'>
           <ul className={menuSwitch}>
             <li 
-              onClick={()=> props.newGame()} 
+              onClick={()=> newGame()} 
               className={navLink}>
                 New game
             </li>
             <li 
-              onClick={()=> handleNavLinkClick()} 
+              onClick={()=> handleAbout(true)} 
               className={navLink}>
+                About
             </li>
           </ul>
         </nav>
