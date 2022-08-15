@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.e613941c.css",
-    "main.js": "/static/js/main.21835991.js",
-    "static/js/787.079dd69e.chunk.js": "/static/js/787.079dd69e.chunk.js",
-    "static/media/wood4.jpg": "/static/media/wood4.d855a7dc0ebfde10cd02.jpg",
-    "static/media/NateScapes-11.jpg": "/static/media/NateScapes-11.13a4b88ba23a329f468f.jpg",
-    "static/media/NateScapes-2.jpg": "/static/media/NateScapes-2.d2d5ca1ae6711350fa27.jpg",
-    "static/media/NateScapes-4.jpg": "/static/media/NateScapes-4.4a2f33c3133501932aab.jpg",
-    "static/media/NateScapes-18.jpg": "/static/media/NateScapes-18.5e3e4c09c3b46258e584.jpg",
-    "static/media/NateScapes-15.jpg": "/static/media/NateScapes-15.74c93a01da3c67b3eb77.jpg",
-    "static/media/NateScapes-16.jpg": "/static/media/NateScapes-16.0c6a57f1949d3f7f025c.jpg",
-    "static/media/NateScapes-5.jpg": "/static/media/NateScapes-5.b5641587592eed098158.jpg",
-    "static/media/NateScapes-10.jpg": "/static/media/NateScapes-10.492f9608adc4371589db.jpg",
-    "static/media/NateScapes-7.jpg": "/static/media/NateScapes-7.1752ce97bd5909522c94.jpg",
-    "static/media/NateScapes-3.jpg": "/static/media/NateScapes-3.bda512757cfd4874d211.jpg",
-    "static/media/NateScapes-9.jpg": "/static/media/NateScapes-9.84cc1c13104898b3d2c8.jpg",
-    "static/media/NateScapes-6.jpg": "/static/media/NateScapes-6.b1bb0c2676f4dc2f38b9.jpg",
-    "static/media/whiteLogo.svg": "/static/media/whiteLogo.e016ddda427acd6152ea974bab8d3140.svg",
-    "index.html": "/index.html",
-    "main.e613941c.css.map": "/static/css/main.e613941c.css.map",
-    "main.21835991.js.map": "/static/js/main.21835991.js.map",
-    "787.079dd69e.chunk.js.map": "/static/js/787.079dd69e.chunk.js.map"
+    "main.css": "/MemoryCardGame/static/css/main.e613941c.css",
+    "main.js": "/MemoryCardGame/static/js/main.a17d32da.js",
+    "static/js/787.079dd69e.chunk.js": "/MemoryCardGame/static/js/787.079dd69e.chunk.js",
+    "static/media/wood4.jpg": "/MemoryCardGame/static/media/wood4.d855a7dc0ebfde10cd02.jpg",
+    "static/media/NateScapes-11.jpg": "/MemoryCardGame/static/media/NateScapes-11.13a4b88ba23a329f468f.jpg",
+    "static/media/NateScapes-2.jpg": "/MemoryCardGame/static/media/NateScapes-2.d2d5ca1ae6711350fa27.jpg",
+    "static/media/NateScapes-4.jpg": "/MemoryCardGame/static/media/NateScapes-4.4a2f33c3133501932aab.jpg",
+    "static/media/NateScapes-18.jpg": "/MemoryCardGame/static/media/NateScapes-18.5e3e4c09c3b46258e584.jpg",
+    "static/media/NateScapes-15.jpg": "/MemoryCardGame/static/media/NateScapes-15.74c93a01da3c67b3eb77.jpg",
+    "static/media/NateScapes-16.jpg": "/MemoryCardGame/static/media/NateScapes-16.0c6a57f1949d3f7f025c.jpg",
+    "static/media/NateScapes-5.jpg": "/MemoryCardGame/static/media/NateScapes-5.b5641587592eed098158.jpg",
+    "static/media/NateScapes-10.jpg": "/MemoryCardGame/static/media/NateScapes-10.492f9608adc4371589db.jpg",
+    "static/media/NateScapes-7.jpg": "/MemoryCardGame/static/media/NateScapes-7.1752ce97bd5909522c94.jpg",
+    "static/media/NateScapes-3.jpg": "/MemoryCardGame/static/media/NateScapes-3.bda512757cfd4874d211.jpg",
+    "static/media/NateScapes-9.jpg": "/MemoryCardGame/static/media/NateScapes-9.84cc1c13104898b3d2c8.jpg",
+    "static/media/NateScapes-6.jpg": "/MemoryCardGame/static/media/NateScapes-6.b1bb0c2676f4dc2f38b9.jpg",
+    "static/media/whiteLogo.svg": "/MemoryCardGame/static/media/whiteLogo.e016ddda427acd6152ea974bab8d3140.svg",
+    "index.html": "/MemoryCardGame/index.html",
+    "main.e613941c.css.map": "/MemoryCardGame/static/css/main.e613941c.css.map",
+    "main.a17d32da.js.map": "/MemoryCardGame/static/js/main.a17d32da.js.map",
+    "787.079dd69e.chunk.js.map": "/MemoryCardGame/static/js/787.079dd69e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e613941c.css",
-    "static/js/main.21835991.js"
+    "static/js/main.a17d32da.js"
   ]
 }
