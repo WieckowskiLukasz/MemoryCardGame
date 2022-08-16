@@ -14,10 +14,10 @@ export default function Scoreboard({matchedPairs, moves, seconds, minutes, score
         <div className='scoreboard__item'>
           <i className="las la-stopwatch"></i> {time} 
         </div>
-        <div className='scoreboard__item'>
+        <div className='scoreboard__item moves'>
           Moves: {moves}
         </div>
-        <div className='scoreboard__item'>
+        <div className='scoreboard__item matched'>
           Matched: {matchedPairs}
         </div>
         <div className='scoreboard__item'>

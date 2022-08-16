@@ -21,7 +21,8 @@ const Header = ({newGame, handleAbout}: HeaderInterface) =>{
     setMenuMobileActive(prev => !prev);
   };
  
-  const handleNavLinkClick = () => {setMenuMobileActive(false);};
+  const handleNewGameButton = () => {newGame(); setMenuMobileActive(false);};
+  const handleAboutButton = () => {handleAbout(true); setMenuMobileActive(false);};
 
   const navLink = pageMobile ? 
     'navigation__link navigation__link--mobile' 
@@ -44,12 +45,12 @@ const Header = ({newGame, handleAbout}: HeaderInterface) =>{
         <nav className='navigation'>
           <ul className={menuSwitch}>
             <li 
-              onClick={()=> newGame()} 
+              onClick={()=> handleNewGameButton()} 
               className={navLink}>
                 New game
             </li>
             <li 
-              onClick={()=> handleAbout(true)} 
+              onClick={()=> handleAboutButton()} 
               className={navLink}>
                 About
             </li>

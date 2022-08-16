@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import bg from './assets/wood4.jpg';
+import bg from './assets/wood.webp';
 import Cards from './components/Cards.tsx';
 import Scoreboard from './layouts/Scoreboard.tsx';
 import {createCardList} from './components/CreateCardList.ts';
@@ -181,16 +181,17 @@ export default function Game() {
         handleAbout={handleAbout}
       />
       <div className='game'>
-        <div 
-          className='background-image'
-          style={{
-            backgroundImage:`url(${bg})`,
-            filter: `brightness(80%)`,
-          }}>
-        </div>
+        
         {displayScoreboard}
-        <div className='game__card-container'>
-          {displayCardList}
+        <div className='game__table'
+        style={{
+          backgroundImage:`url(${bg})`,
+          filter: `brightness(100%)`,
+        }}
+        >
+          <div className='game__card-container'>
+            {displayCardList}
+          </div>
         </div>
       </div>
     </>

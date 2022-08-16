@@ -14,6 +14,11 @@
   z-index: 2;
   background-image: $header-bgc;
   transition: .3s;
+  @include breakpointMax(md){
+    transition: none;
+    height: 60px;
+    background-image: none;
+  }
   @include breakpointMax(sm){
     transition: none;
     height: 60px;
@@ -32,6 +37,9 @@
   padding: 10px;
   width: 170px;
   transition: .3s;
+  @include breakpointMax(900px){
+    width: 120px;
+  }
   @include breakpointMax(sm){
     width: 120px;
   }
@@ -106,10 +114,11 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    font-size: 25px;
+    font-size: 1rem;
     display: block;
     cursor: pointer;
     color: $nav-link-color;
+    transform: translate(15px, -5px);
     @include breakpointMin(md) {
       display: none;
     }
