@@ -31,10 +31,8 @@
     @include breakpointMax(1000px){
       min-width: 90px;
     }
-    @include breakpointMax(400px){
-      min-width: 80px;
-    }
     @include breakpointMax(xxxs){
+      min-width: 80px;
       font-size: .8rem;
       margin: 0 2px;
     }
@@ -43,7 +41,7 @@
       @include breakpointMax(1000px){
         min-width: 70px;
       }
-      @include breakpointMax(400px){
+      @include breakpointMax(xs){
         min-width: 60px;
       }
     }

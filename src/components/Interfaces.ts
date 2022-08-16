@@ -35,6 +35,7 @@ interface ScoreboardInterface {
 interface EndGamePopUpInterface {
   endTime: false;
   score: number;
+  bestScore: number;
   newGame: () => void;
   handleEndGamePopUp: (value: boolean) => void;
 };

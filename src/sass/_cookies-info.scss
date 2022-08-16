@@ -1,0 +1,37 @@
+.info-cookies{
+  position: fixed;
+	width: 100%;
+	background-color: $pop-up-container-bg;
+	height: auto;
+	bottom: 0;
+	left: 0; 
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__warning{
+		max-width: 1600px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 10px;
+		@include breakpointMax(xs){
+			flex-direction: column;
+		}
+	}
+	&__text{
+		color: black;
+		padding: 20px;
+		align-self: center;
+		font-size: 1rem;
+		font-weight: 300;
+		text-align: justify;
+		text-shadow: .5px .5px dimgray;
+		letter-spacing: 1px;
+	}
+	&__button{
+		@include pop-up-button;
+		font-size: 1.2rem;
+		padding: 5px 7px;
+	}
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {EndGamePopUpInterface} from '../components/Interfaces';
 
-export default function EndGamePopUp({endTime, score, newGame, handleEndGamePopUp}: EndGamePopUpInterface) {
+export default function EndGamePopUp({endTime, score, bestScore, newGame, handleEndGamePopUp}: EndGamePopUpInterface) {
 
   const header = endTime ?
     'Unfortunately, the game time is up!'
@@ -24,10 +24,10 @@ export default function EndGamePopUp({endTime, score, newGame, handleEndGamePopU
           </div>
           <div className="end-game-pop-up__score">
             <div className="end-game-pop-up__score-text">
-              Your best score: 
+              Your best score:
             </div>
             <div className="end-game-pop-up__score-number">
-               
+               {bestScore}
             </div>
           </div>
         </div>

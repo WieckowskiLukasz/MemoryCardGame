@@ -25,7 +25,7 @@
   }
   &__content{
     width: 100vw;
-    max-width: 2500px;
+    max-width: 2560px;
     height: 60px;
     justify-content: space-between;
     display: flex;
@@ -59,7 +59,7 @@
       left: -100vw;
       width: 0;
       height: 0;
-      box-shadow: 2px 2px 2px 0px rgba(66, 68, 90, 1);
+      box-shadow: 2px 2px 2px 0px dimgray;
       padding: 20px 10px 0 10px;
     }
     &--active{
@@ -71,7 +71,7 @@
       left: -20px;
       width: 80vw;
       height: 100vh;
-      background-color: dimgray;
+      background-color: $pop-up-container-bg;
       @include breakpointMax(xxxs){
         width: 95vw;
       }
@@ -104,6 +104,7 @@
       padding-left: 45px;
       display: block;
       min-width: 100%;
+      color: $nav-link-color-mobile; 
       a{
         display: block;
         min-width: 100%;

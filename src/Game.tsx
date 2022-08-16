@@ -8,6 +8,7 @@ import Header from './layouts/Header.tsx';
 import EndGamePopUp from './layouts/EndGamePopUp.tsx';
 import About from './layouts/AboutPopUp.tsx';
 import Score from './components/Score.ts';
+import {bestRecord} from './components/BestRecord.ts';
 import {coverAllCards, coverCards, revealCard, guessedCard} from './components/HandleFlipCard.ts';
 
 export default function Game() {
@@ -25,6 +26,7 @@ export default function Game() {
   const [gameActive, setGameActive] = useState<boolean>(false);
   const [endTime, setEndTime] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
+  const [bestScore, setBestScore] = useState<number>(0);
   const [aboutActive, setAboutActive] = useState<boolean>(false);
   const [endGameActive, setEndGameActive] = useState<boolean>(false);
   const [newGameAnimation, setNewGameAnimation] = useState<boolean>(false);
@@ -48,6 +50,7 @@ export default function Game() {
   };
 
   const newGame = () =>{
+    setEndGameActive(false);
     setNewGameAnimation(true);
     setCardList(coverAllCards(cardList));
     const timer = setTimeout(resetParameters, 1200);
@@ -61,6 +64,7 @@ export default function Game() {
   const handleGameStatus = () =>{
     if(matchedPairs === 12) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true);};
     if(minutes >= 5) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true); setEndTime(true);};
+    setBestScore(bestRecord(score));
   };
 
   const checkNumberOfCards = () =>{
@@ -85,7 +89,6 @@ export default function Game() {
     setSeconds(0);
     setMinutes(0);
     setGameActive(false);
-    setEndGameActive(false);
     setEndTime(false);
     setScore(0);
     setNewGameAnimation(false);
@@ -158,6 +161,7 @@ export default function Game() {
     <EndGamePopUp
       endTime={endTime}
       score={score}
+      bestScore={bestScore}
       newGame={newGame}
       handleEndGamePopUp={handleEndGamePopUp}
     /> 
