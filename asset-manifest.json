@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/MemoryCardGame/static/css/main.07db3264.css",
-    "main.js": "/MemoryCardGame/static/js/main.26d91937.js",
+    "main.css": "/MemoryCardGame/static/css/main.14e36e80.css",
+    "main.js": "/MemoryCardGame/static/js/main.f8ac8be2.js",
     "static/js/787.079dd69e.chunk.js": "/MemoryCardGame/static/js/787.079dd69e.chunk.js",
-    "static/media/wood4.jpg": "/MemoryCardGame/static/media/wood4.d855a7dc0ebfde10cd02.jpg",
-    "static/media/NateScapes-2.jpg": "/MemoryCardGame/static/media/NateScapes-2.d2d5ca1ae6711350fa27.jpg",
-    "static/media/NateScapes-4.jpg": "/MemoryCardGame/static/media/NateScapes-4.4a2f33c3133501932aab.jpg",
-    "static/media/NateScapes-18.jpg": "/MemoryCardGame/static/media/NateScapes-18.5e3e4c09c3b46258e584.jpg",
-    "static/media/NateScapes-15.jpg": "/MemoryCardGame/static/media/NateScapes-15.74c93a01da3c67b3eb77.jpg",
-    "static/media/NateScapes-16.jpg": "/MemoryCardGame/static/media/NateScapes-16.0c6a57f1949d3f7f025c.jpg",
-    "static/media/NateScapes-17.jpg": "/MemoryCardGame/static/media/NateScapes-17.eadbae9765cf3497c37e.jpg",
-    "static/media/NateScapes-13.jpg": "/MemoryCardGame/static/media/NateScapes-13.cd724f92c0cd44d6a979.jpg",
-    "static/media/NateScapes-10.jpg": "/MemoryCardGame/static/media/NateScapes-10.492f9608adc4371589db.jpg",
-    "static/media/NateScapes-7.jpg": "/MemoryCardGame/static/media/NateScapes-7.1752ce97bd5909522c94.jpg",
-    "static/media/NateScapes-3.jpg": "/MemoryCardGame/static/media/NateScapes-3.bda512757cfd4874d211.jpg",
-    "static/media/NateScapes-9.jpg": "/MemoryCardGame/static/media/NateScapes-9.84cc1c13104898b3d2c8.jpg",
-    "static/media/NateScapes-6.jpg": "/MemoryCardGame/static/media/NateScapes-6.b1bb0c2676f4dc2f38b9.jpg",
+    "static/media/wood.webp": "/MemoryCardGame/static/media/wood.00c49cfdcbc36cabd4c1.webp",
+    "static/media/1.webp": "/MemoryCardGame/static/media/1.2bb1299798dbcd8025f1.webp",
+    "static/media/11.webp": "/MemoryCardGame/static/media/11.0e899cfc7e4540afbee2.webp",
+    "static/media/8.webp": "/MemoryCardGame/static/media/8.452d6b5be0c39349c37c.webp",
+    "static/media/9.webp": "/MemoryCardGame/static/media/9.538498e9d684c75b0f72.webp",
+    "static/media/12.webp": "/MemoryCardGame/static/media/12.294606382260ee421d3c.webp",
+    "static/media/2.webp": "/MemoryCardGame/static/media/2.6e541a1ee709fa7ac661.webp",
+    "static/media/10.webp": "/MemoryCardGame/static/media/10.865421202a02672edc40.webp",
+    "static/media/7.webp": "/MemoryCardGame/static/media/7.176cd1d85ed23f80fba7.webp",
+    "static/media/6.webp": "/MemoryCardGame/static/media/6.4cd49b1744609ca29a24.webp",
+    "static/media/4.webp": "/MemoryCardGame/static/media/4.30d789e520899db9be35.webp",
+    "static/media/5.webp": "/MemoryCardGame/static/media/5.9122bc14563da8d54907.webp",
+    "static/media/3.webp": "/MemoryCardGame/static/media/3.b734140ea4c241502fb6.webp",
     "static/media/whiteLogo.svg": "/MemoryCardGame/static/media/whiteLogo.e016ddda427acd6152ea974bab8d3140.svg",
     "index.html": "/MemoryCardGame/index.html",
-    "main.07db3264.css.map": "/MemoryCardGame/static/css/main.07db3264.css.map",
-    "main.26d91937.js.map": "/MemoryCardGame/static/js/main.26d91937.js.map",
+    "main.14e36e80.css.map": "/MemoryCardGame/static/css/main.14e36e80.css.map",
+    "main.f8ac8be2.js.map": "/MemoryCardGame/static/js/main.f8ac8be2.js.map",
     "787.079dd69e.chunk.js.map": "/MemoryCardGame/static/js/787.079dd69e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.07db3264.css",
-    "static/js/main.26d91937.js"
+    "static/css/main.14e36e80.css",
+    "static/js/main.f8ac8be2.js"
   ]
 }
