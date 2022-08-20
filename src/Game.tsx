@@ -12,6 +12,7 @@ import {bestRecord} from './components/BestRecord.ts';
 import {coverAllCards, coverCards, revealCard, guessedCard} from './components/HandleFlipCard.ts';
 
 export default function Game() {
+  const [numberOfCards] = useState<number>(24);
   const [cardList, setCardList] = useState<CardListInterface[]>([]);
   const [activeFirstCardImageID, setActiveFirstCardImageID] = useState<number | null>(null);
   const [activeFirstCardID, setActiveFirstCardID] = useState<number | null>(null);
@@ -19,6 +20,7 @@ export default function Game() {
   const [activeSecondCardID, setActiveSecondCardID] = useState<number | null>(null);
   const [numberOfSelectedCards, setNumberOfSelectedCards] = useState<number>(0);
   const [gameboardBlocked, setGameboardBlocked] = useState<boolean>(false);
+  const [cardBlocked, setCardBlocked] = useState<number | null>(0);
   const [matchedPairs, setMatchedPairs] = useState<number>(0);
   const [moves, setMoves] = useState<number>(0);
   const [seconds, setSeconds] = useState<number>(0);
@@ -39,7 +41,7 @@ export default function Game() {
       return () => clearInterval(interval);
     };
   },[gameActive]);
-  useEffect(()=> setCardList(createCardList),[]);
+  useEffect(()=> setCardList(createCardList(numberOfCards)),[]);
   useEffect(()=> updateTime(),[seconds]);
   useEffect(()=> checkNumberOfCards(),[numberOfSelectedCards]);
   useEffect(()=> blockGameboard(),[numberOfSelectedCards]);
@@ -67,9 +69,7 @@ export default function Game() {
     setBestScore(bestRecord(score));
   };
 
-  const checkNumberOfCards = () =>{
-    if(numberOfSelectedCards === 2) checkPairTimeout();
-  };
+  const checkNumberOfCards = () => {if(numberOfSelectedCards === 2) checkPairTimeout();};
 
   const checkPairTimeout = () =>{
     const timer = setTimeout(checkPair, 1200);
@@ -77,7 +77,7 @@ export default function Game() {
   };
 
   const resetParameters = () =>{
-    setCardList(createCardList);
+    setCardList(createCardList(numberOfCards));
     setActiveFirstCardImageID(null);
     setActiveFirstCardID(null);
     setActiveSecondCardImageID(null);
@@ -117,7 +117,7 @@ export default function Game() {
       case 2:
         setActiveSecondCardID(cardNumber);
         setActiveSecondCardImageID(imageNumber);
-        setNumberOfSelectedCards(1);;
+        setNumberOfSelectedCards(1);
           break;
     };
   };
@@ -136,16 +136,20 @@ export default function Game() {
       setCardList(coverCards(cardList, activeFirstCardID, activeSecondCardID));
     };
     setGameboardBlocked(false);
+    setCardBlocked(null);
   };
 
-  const handleAbout = (value) => setAboutActive(value);
-  const handleEndGamePopUp = (value) => setEndGameActive(value);
+  const handleAbout = (value: boolean) => setAboutActive(value);
+  const handleEndGamePopUp = (value: boolean) => setEndGameActive(value);
+  const handleCardBlocked = (value: number) => setCardBlocked(value);
   
   const displayCardList = cardList ? 
     <Cards
       cardList={cardList}
       handleCard={handleCard}
       gameboardBlocked={gameboardBlocked}
+      handleCardBlocked={handleCardBlocked}
+      cardBlocked={cardBlocked}
     /> 
     : null
   const displayScoreboard = cardList ? 
@@ -185,12 +189,10 @@ export default function Game() {
         handleAbout={handleAbout}
       />
       <div className='game'>
-        
         {displayScoreboard}
         <div className='game__table'
         style={{
           backgroundImage:`url(${bg})`,
-          filter: `brightness(100%)`,
         }}
         >
           <div className='game__card-container'>

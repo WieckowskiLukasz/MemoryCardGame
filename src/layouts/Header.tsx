@@ -3,8 +3,8 @@ import logo  from '../assets/logo/whiteLogo.svg';
 import {HeaderInterface} from '../components/Interfaces';
 
 const Header = ({newGame, handleAbout}: HeaderInterface) =>{
-  const [menuMobileActive, setMenuMobileActive] = useState(false);
-  const [pageMobile, setpageMobile] = useState(false);
+  const [menuMobileActive, setMenuMobileActive] = useState<boolean>(false);
+  const [pageMobile, setpageMobile] = useState<boolean>();
 
   useEffect(() => {
     handleWidth();

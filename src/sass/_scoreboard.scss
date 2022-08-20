@@ -1,28 +1,23 @@
 .scoreboard{
   z-index: 3;
-  position: fixed;
-  top: 0px;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
   display: flex;
   text-transform: uppercase;
   font-size: 1.8rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-shadow: .5px .5px black;
+  padding: 10px;
+  width: 100%;
+  padding: 20px;
   @include breakpointMax(1000px){
-    top: 0px;
     font-size: 1rem;
   }
   @include breakpointMax(xs){
-    top: 40px;
-    font-size: 1rem;
-  }
-  @include breakpointMax(400px){
-    top: 20px;
+    padding: 10px;
     font-size: .9rem;
   }
-  @include breakpointMax(xxxs){
+  @include breakpointMax(400px){
     font-size: .8rem;
   }
   &__item{
@@ -31,7 +26,7 @@
     @include breakpointMax(1000px){
       min-width: 90px;
     }
-    @include breakpointMax(xxxs){
+    @include breakpointMax(xxs){
       min-width: 80px;
       font-size: .8rem;
       margin: 0 2px;
@@ -39,10 +34,19 @@
     &.moves{
       min-width: 170px;
       @include breakpointMax(1000px){
-        min-width: 70px;
+        min-width: 80px;
       }
       @include breakpointMax(xs){
         min-width: 60px;
+      }
+    }
+    &.matched{
+      min-width: 170px;
+      @include breakpointMax(1000px){
+        min-width: 90px;
+      }
+      @include breakpointMax(xs){
+        min-width: 70px;
       }
     }
   }

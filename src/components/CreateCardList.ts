@@ -1,49 +1,60 @@
-import images from '../components/Images.ts';
+import {images} from '../components/Images.ts';
+import {CardListInterface} from '../components/Interfaces';
 
-export const createCardList = () => {
-  const numberOfCards: number = 24;
+export const createCardList = (numberOfCards: number) => {
+  const imageList = images(numberOfCards);
 
-  let cards: any[] = [];
+  const createCardList = () =>{
+    let cardList: CardListInterface[] = [];
 
-  let oneCard: {
-    cardID: number;
-    imageIndex: null | number;
-    imageID: null | number;
-    imageSrc: string;
-    guessed: boolean;
-    exposed: boolean;
+    let oneCard: {
+      cardID: number;
+      imageIndex: null | number;
+      imageID: null | number;
+      imageSrc: string;
+      guessed: boolean;
+      exposed: boolean;
+    };
+
+    for(let i = 0; i < numberOfCards; i++){
+      oneCard = {
+        cardID: i,
+        imageIndex: null,
+        imageID: null,
+        imageSrc: '',
+        guessed: false,
+        exposed: false,
+      }
+      cardList.push(oneCard);
+    }
+
+    return cardList;
   };
 
   const getRandomImage = () =>{
-    let randomImageNumber: number = Math.floor(Math.random() * (images.length));
+    let randomImageNumber: number = Math.floor(Math.random() * (imageList.length));
     return randomImageNumber;
-  }
+  };
 
-  for(let i = 0; i < numberOfCards; i++){
-    oneCard = {
-      cardID: i,
-      imageIndex: null,
-      imageID: null,
-      imageSrc: '',
-      guessed: false,
-      exposed: false,
-    }
-    cards.push(oneCard);
-  }
+  const addImages = () =>{
+    const cardList = createCardList();
 
-  cards.forEach(element => {
-    let random: number;
-    let checkNumber: boolean;
-    
-    do {
-      random = getRandomImage();
-      checkNumber = cards.some(item => item.imageIndex === random);
-    } while (checkNumber);
-    
-    element.imageIndex = random;
-    element.imageID = images[random].ID;
-    element.imageSrc = images[random].Image;
-  });
+    cardList.forEach(element => {
+      let random: number;
+      let checkNumber: boolean;
+      
+      do {
+        random = getRandomImage();
+        checkNumber = cardList.some(item => item.imageIndex === random);
+      } while (checkNumber);
+      
+      element.imageIndex = random;
+      element.imageID = imageList[random].ID;
+      element.imageSrc = imageList[random].Image;
+    });
 
-  return(cards);
-}
+    return cardList;
+  };
+
+  return(addImages());
+};

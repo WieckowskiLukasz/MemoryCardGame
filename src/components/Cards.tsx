@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../components/Card.tsx';
 import {CardsInterface} from '../components/Interfaces';
 
-export default function Cards({cardList, handleCard, gameboardBlocked}:CardsInterface) {
+export default function Cards({cardList, handleCard, gameboardBlocked, handleCardBlocked, cardBlocked}:CardsInterface) {
 
   const cardsArray = cardList.map((element, index)=>
     <Card
@@ -13,7 +13,9 @@ export default function Cards({cardList, handleCard, gameboardBlocked}:CardsInte
       guessed = {element.guessed}
       exposed = {element.exposed}
       handleCard = {handleCard}
-      gameboardBlocked={gameboardBlocked}
+      gameboardBlocked = {gameboardBlocked}
+      handleCardBlocked = {handleCardBlocked}
+      cardBlocked = {cardBlocked}
     />
   );
 

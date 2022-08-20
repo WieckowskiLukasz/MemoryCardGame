@@ -1,7 +1,9 @@
+import { StringLiteralType } from "typescript";
+
 interface CardListInterface {
   cardID: number;
-  imageIndex: number;
-  imageID: number;
+  imageIndex: null | number;
+  imageID: null | number;
   imageSrc: string;
   guessed: boolean;
   exposed: boolean;
@@ -11,6 +13,8 @@ interface CardsInterface {
   cardList: CardListInterface[];
   handleCard: (cardID: number, imageID: number) => void;
   gameboardBlocked: boolean;
+  handleCardBlocked: (cardID: number) => void;
+  cardBlocked: number;
 };
 
 interface CardInterface {
@@ -22,6 +26,8 @@ interface CardInterface {
   exposed: boolean;
   handleCard: (cardID: number, imageID: number) => void;
   gameboardBlocked: boolean;
+  handleCardBlocked: (cardID: number) => void;
+  cardBlocked: number;
 };
 
 interface ScoreboardInterface {
@@ -49,6 +55,17 @@ interface HeaderInterface {
   handleAbout: (value: boolean) => void;
 };
 
+interface imagesArrayInterface {
+  Image: StringLiteralType;
+  ID: number;
+};
+
+interface imageListInterface {
+  Image: StringLiteralType | null;
+  ID: number | null;
+  imageIndex: number | null;
+};
+
 export{
   CardListInterface,
   CardsInterface,
@@ -57,4 +74,6 @@ export{
   EndGamePopUpInterface,
   AboutPopUpInterface,
   HeaderInterface,
+  imagesArrayInterface,
+  imageListInterface,
 };

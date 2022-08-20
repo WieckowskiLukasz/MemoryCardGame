@@ -3,10 +3,10 @@ import cookies from 'js-cookies';
 
 export default function CookiesInfo() {
 
-	const [cookiesAccepted, setCookiesAccepted] = useState<boolean>();
+	const [cookiesAccepted, setCookiesAccepted] = useState<boolean>(true);
 	
 	useEffect(() => {
-    const info = cookies.getItem('info');
+    const info: string = cookies.getItem('info');
 		if(info)setCookiesAccepted(true);
 		else setCookiesAccepted(false);
   });

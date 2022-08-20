@@ -1,22 +1,22 @@
 import React from 'react';
 import {CardInterface} from '../components/Interfaces';
 
-export default function Card({cardID, imageIndex, imageID, imageSrc, guessed, exposed, handleCard, gameboardBlocked}: CardInterface) {
+export default function Card({cardID, imageID, imageSrc, guessed, exposed, handleCard, gameboardBlocked, handleCardBlocked, cardBlocked}: CardInterface) {
 
   const flipCardClassName = guessed ? 
     'game__flip-card game__flip-card--guessed' 
     : 'game__flip-card';
 
-  const cardClassName = exposed || guessed ? 
+  const cardClassName = exposed ? 
     'game__card game__card--exposed' 
     : 'game__card';
 
   const cursor = gameboardBlocked || exposed ? 
-  'default' 
-  : 'pointer';
+    'default' 
+    : 'pointer';
 
   const cardOnCLick = () => {
-    if(!gameboardBlocked) handleCard(cardID, imageID);
+    if(!gameboardBlocked && cardBlocked !== cardID) {handleCardBlocked(cardID); handleCard(cardID, imageID)};
   };
 
   return (
@@ -36,5 +36,5 @@ export default function Card({cardID, imageIndex, imageID, imageSrc, guessed, ex
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -11,9 +11,9 @@ const Score = (minutes: number, moves: number): number =>{
   else timeMultipier = 1;
 
   if(moves < 10) moveMultipier = 5;
-  else if(moves >= 10 && moves < 15) moveMultipier = 4;
+  else if(moves >= 10 && moves < 16) moveMultipier = 4;
   else if(moves >= 16 && moves < 20) moveMultipier = 3;
-  else if(moves >= 20 && moves < 25) moveMultipier = 2;
+  else if(moves >= 20 && moves < 26) moveMultipier = 2;
   else moveMultipier = 1;
 
   oneMatchScore = points * timeMultipier  * moveMultipier;
