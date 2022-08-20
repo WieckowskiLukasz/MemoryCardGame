@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/MemoryCardGame/static/css/main.0bc339b0.css",
-    "main.js": "/MemoryCardGame/static/js/main.cc38f716.js",
+    "main.js": "/MemoryCardGame/static/js/main.831252a1.js",
     "static/js/787.079dd69e.chunk.js": "/MemoryCardGame/static/js/787.079dd69e.chunk.js",
-    "static/media/wood2.webp": "/MemoryCardGame/static/media/wood2.8d02887913f36ffecdbb.webp",
+    "static/media/wood.webp": "/MemoryCardGame/static/media/wood.8d02887913f36ffecdbb.webp",
     "static/media/20.webp": "/MemoryCardGame/static/media/20.e5001944113956d56ac4.webp",
     "static/media/1.webp": "/MemoryCardGame/static/media/1.8a2efdf30d986733cd94.webp",
     "static/media/14.webp": "/MemoryCardGame/static/media/14.895c1928da0474882aa2.webp",
@@ -37,11 +37,11 @@
     "static/media/18.webp": "/MemoryCardGame/static/media/18.263f2a7846a9e74244c0.webp",
     "index.html": "/MemoryCardGame/index.html",
     "main.0bc339b0.css.map": "/MemoryCardGame/static/css/main.0bc339b0.css.map",
-    "main.cc38f716.js.map": "/MemoryCardGame/static/js/main.cc38f716.js.map",
+    "main.831252a1.js.map": "/MemoryCardGame/static/js/main.831252a1.js.map",
     "787.079dd69e.chunk.js.map": "/MemoryCardGame/static/js/787.079dd69e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0bc339b0.css",
-    "static/js/main.cc38f716.js"
+    "static/js/main.831252a1.js"
   ]
 }
