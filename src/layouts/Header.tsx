@@ -1,12 +1,12 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState, useLayoutEffect} from 'react';
 import logo  from '../assets/logo/whiteLogo.svg';
 import {HeaderInterface} from '../components/Interfaces';
 
 const Header = ({newGame, handleAbout}: HeaderInterface) =>{
-  const [menuMobileActive, setMenuMobileActive] = useState<boolean>(false);
+  const [menuMobileActive, setMenuMobileActive] = useState<boolean>();
   const [pageMobile, setpageMobile] = useState<boolean>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     handleWidth();
   }, [pageMobile]);
 

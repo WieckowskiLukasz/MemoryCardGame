@@ -10,14 +10,17 @@
   background-color: none;
   z-index: 2;
   background-image: $header-bgc;
-  transition: .3s;
+  @include breakpointMax(xl){
+    height: 70px;
+  }
+  @include breakpointMax(lg){
+    height: 50px;
+  }
   @include breakpointMax(md){
-    transition: none;
     height: 60px;
     background-image: none;
   }
   @include breakpointMax(sm){
-    transition: none;
     height: 60px;
   }
   &__content{

@@ -56,5 +56,14 @@ export const createCardList = (numberOfCards: number) => {
     return cardList;
   };
 
-  return(addImages());
+  const shuffleCardList = (cardList: CardListInterface[]) => {
+    for (let i = cardList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cardList[i], cardList[j]] = [cardList[j], cardList[i]];
+    };
+
+    return cardList;
+  };
+
+  return(shuffleCardList(addImages()));
 };

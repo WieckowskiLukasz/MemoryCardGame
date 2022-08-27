@@ -7,7 +7,7 @@ export default function Card({cardID, imageID, imageSrc, guessed, exposed, handl
     'game__flip-card game__flip-card--guessed' 
     : 'game__flip-card';
 
-  const cardClassName = exposed ? 
+  const cardClassName = exposed || guessed? 
     'game__card game__card--exposed' 
     : 'game__card';
 

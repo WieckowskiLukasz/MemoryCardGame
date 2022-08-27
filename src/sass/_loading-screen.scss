@@ -1,0 +1,123 @@
+@keyframes opacity {
+  0% {
+    opacity: 100%;
+  }
+  90% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.loading-screen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  @keyframes loading-bg {
+    0% {
+      background-color: black;
+    }
+    50% {
+      background-color: black;
+    }
+    100% {
+      background-color: none;
+    }
+  }
+  animation: loading-bg 3.5s ease;
+  &__logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    img{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      animation: logo 2s ease;
+      opacity: 0;
+      @keyframes logo {
+        0% {
+          width: 80%;
+          opacity: 100%;
+        }
+        30% {
+          width: 100%;
+          opacity: 100%;
+        }
+        90% {
+          width: 80%;
+          opacity: 100%;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  &__progress-bar-container{
+    width: 100%;
+    transform: translateY(50px);
+    position: absolute;
+    top: 70%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+  }
+  &__progress-bar-bg{
+    background-color: dimgray;
+    width: 100%;
+    height: 6px;
+    animation: opacity 2s linear;
+    opacity: 0;
+  }
+  &__progress-bar{
+    transform: translateY(-6px);
+    align-self: flex-start;
+    width: 100%;
+    height: 6px;
+    background-color: white;
+    animation: progress-bar 2s linear;
+    opacity: 0;
+    @keyframes progress-bar {
+      0% {
+        width: 0%;
+        opacity: 100%;
+      }
+      90% {
+        width: 100%;
+        opacity: 100%;
+      }
+      100% {
+        width: 100%;
+        opacity: 0;
+      }
+    }
+  }
+  &__copyright{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    animation: opacity 2s linear;
+    opacity: 0;
+    i{
+      transform: translateY(3px);
+    }
+  }
+}

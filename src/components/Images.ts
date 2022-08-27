@@ -94,5 +94,14 @@ export const images = (numberOfCards: number) =>{
     return imageList;
   };
 
-  return (createRandomImageList());
+  const shuffleImageList = (imageList: imageListInterface[]) => {
+    for (let i = imageList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [imageList[i], imageList[j]] = [imageList[j], imageList[i]];
+    };
+    
+    return imageList;
+  };
+
+  return (shuffleImageList(createRandomImageList()));
 };

@@ -11,6 +11,7 @@ import Score from './components/Score.ts';
 import {bestRecord} from './components/BestRecord.ts';
 import {coverAllCards, coverCards, revealCard, guessedCard} from './components/HandleFlipCard.ts';
 
+
 export default function Game() {
   const [numberOfCards] = useState<number>(24);
   const [cardList, setCardList] = useState<CardListInterface[]>([]);
@@ -32,7 +33,7 @@ export default function Game() {
   const [aboutActive, setAboutActive] = useState<boolean>(false);
   const [endGameActive, setEndGameActive] = useState<boolean>(false);
   const [newGameAnimation, setNewGameAnimation] = useState<boolean>(false);
-
+ 
   useEffect(() => {
     if(gameActive){
       const interval = setInterval(() => {
@@ -46,7 +47,7 @@ export default function Game() {
   useEffect(()=> checkNumberOfCards(),[numberOfSelectedCards]);
   useEffect(()=> blockGameboard(),[numberOfSelectedCards]);
   useEffect(()=> handleGameStatus(),[minutes, matchedPairs]);
-
+  
   const updateTime = () =>{
     if(seconds === 60){setSeconds(0); setMinutes(seconds => seconds + 1);};
   };
@@ -64,7 +65,7 @@ export default function Game() {
   };
 
   const handleGameStatus = () =>{
-    if(matchedPairs === 12) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true);};
+    if(matchedPairs === numberOfCards / 2) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true);};
     if(minutes >= 5) {setGameActive(false); setGameboardBlocked(true); setEndGameActive(true); setEndTime(true);};
     setBestScore(bestRecord(score));
   };
