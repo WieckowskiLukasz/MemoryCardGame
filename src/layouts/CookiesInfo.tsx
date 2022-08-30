@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import cookies from 'js-cookies';
+import Languages from '../layouts/Languages.tsx';
 
 export default function CookiesInfo() {
 
@@ -23,12 +24,12 @@ export default function CookiesInfo() {
 					<div className='info-cookies__content'>
 						<div className='info-cookies__warning'>
 							<div className='info-cookies__text'>
-                The website uses cookies to provide services in accordance with the Privacy Policy. You can define the conditions for storing or accessing cookies in your browser.
+								<Languages text={'cookiesInfo'}/>
 							</div>
 							<button 
                 onClick={()=> handleButton()} className='info-cookies__button'
               >
-								<i className="las la-check"></i>Accept
+								<i className="las la-check"></i><Languages text={'acceptButton'}/>
 							</button>
 						</div>
 					</div>

@@ -66,6 +66,14 @@ interface imageListInterface {
   imageIndex: number | null;
 };
 
+interface LanguagesInterface {
+  text: string;
+};
+
+interface defaultObjectContextInterface{ 
+  lang: string;
+};
+
 export{
   CardListInterface,
   CardsInterface,
@@ -76,4 +84,6 @@ export{
   HeaderInterface,
   imagesArrayInterface,
   imageListInterface,
+  LanguagesInterface,
+  defaultObjectContextInterface,
 };

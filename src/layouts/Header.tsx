@@ -1,10 +1,15 @@
-import React, { useEffect, useState, useLayoutEffect} from 'react';
+import React, { useEffect, useState, useLayoutEffect, useContext} from 'react';
 import logo  from '../assets/logo/whiteLogo.svg';
+import pl from '../assets/flags/pl.svg';
+import en from '../assets/flags/en.svg';
 import {HeaderInterface} from '../components/Interfaces';
+import Languages from '../layouts/Languages.tsx';
+import { AppContext } from '../AppContext.tsx';
 
 const Header = ({newGame, handleAbout}: HeaderInterface) =>{
   const [menuMobileActive, setMenuMobileActive] = useState<boolean>();
   const [pageMobile, setpageMobile] = useState<boolean>();
+  const {lang, setLanguage} = useContext(AppContext);
 
   useLayoutEffect(() => {
     handleWidth();
@@ -20,7 +25,11 @@ const Header = ({newGame, handleAbout}: HeaderInterface) =>{
     e.preventDefault();
     setMenuMobileActive(prev => !prev);
   };
- 
+  const handleLangBtn = () =>{
+    if(lang === 'en') setLanguage('pl');
+    else setLanguage('en');
+  };
+  
   const handleNewGameButton = () => {newGame(); setMenuMobileActive(false);};
   const handleAboutButton = () => {handleAbout(true); setMenuMobileActive(false);};
 
@@ -35,9 +44,13 @@ const Header = ({newGame, handleAbout}: HeaderInterface) =>{
   const hamburgerIcon = menuMobileActive ? 
     'las la-times'
     : 'las la-bars';
+  const flagIcon = lang === 'en' ? 
+  pl
+  : en;
+
 
   return(
-    <div className='header'>
+    <header className='header'>
       <div className='header__content'>
         <div>
           <img src={logo} alt='logo' className='logo'></img>
@@ -47,12 +60,17 @@ const Header = ({newGame, handleAbout}: HeaderInterface) =>{
             <li 
               onClick={()=> handleNewGameButton()} 
               className={navLink}>
-                New game
+                <Languages text={'newGameButton'}/>
             </li>
             <li 
               onClick={()=> handleAboutButton()} 
               className={navLink}>
-                About
+                <Languages text={'aboutButton'}/>
+            </li>
+            <li 
+              onClick={()=> handleLangBtn()} 
+              className={navLink}>
+                <img src={flagIcon} alt='flag'/>
             </li>
           </ul>
         </nav>
@@ -61,7 +79,7 @@ const Header = ({newGame, handleAbout}: HeaderInterface) =>{
           <i className={hamburgerIcon}></i>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

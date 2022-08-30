@@ -1,11 +1,12 @@
 import React from 'react';
 import {EndGamePopUpInterface} from '../components/Interfaces';
+import Languages from '../layouts/Languages.tsx';
 
 export default function EndGamePopUp({endTime, score, bestScore, newGame, handleEndGamePopUp}: EndGamePopUpInterface) {
 
   const header = endTime ?
-    'Unfortunately, the game time is up!'
-    : 'Congratulations! You found all the pairs.';
+    <Languages text={'endTimeHeader'}/>
+    : <Languages text={'endGameHeader'}/>;
 
   return (
     <div className='end-game-pop-up'>
@@ -16,7 +17,7 @@ export default function EndGamePopUp({endTime, score, bestScore, newGame, handle
         <div className='end-game-pop-up__score-container'>
           <div className="end-game-pop-up__score">
             <div className="end-game-pop-up__score-text">
-              Your score: 
+              <Languages text={'yourScore'}/>: 
             </div>
             <div className="end-game-pop-up__score-number">
               {score}
@@ -24,7 +25,7 @@ export default function EndGamePopUp({endTime, score, bestScore, newGame, handle
           </div>
           <div className="end-game-pop-up__score">
             <div className="end-game-pop-up__score-text">
-              Your best score:
+              <Languages text={'yourBestScore'}/>:
             </div>
             <div className="end-game-pop-up__score-number">
                {bestScore}
@@ -36,13 +37,13 @@ export default function EndGamePopUp({endTime, score, bestScore, newGame, handle
             className='end-game-pop-up__button'
             onClick={()=> newGame()}
           >
-            <i className="las la-undo-alt"></i>New game
+            <i className="las la-undo-alt"></i><Languages text={'newGameButton'}/>
           </button>
           <button 
             className='end-game-pop-up__button'
             onClick={()=> handleEndGamePopUp(false)}
           >
-            <i className="las la-times"></i>Exit
+            <i className="las la-times"></i><Languages text={'exitButton'}/>
           </button>
         </div>
       </div>

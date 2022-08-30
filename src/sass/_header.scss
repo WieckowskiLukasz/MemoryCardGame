@@ -48,7 +48,7 @@
 .navigation{
   &__links{
     transition: .5s;
-    margin-right: 20px;
+    margin-right: 10px;
     display: flex;
     &--mobile{
       position: absolute;
@@ -82,7 +82,6 @@
   }
   &__link{
     z-index: 2;
-    min-width: 70px;
     list-style:none;
     font-size: 1.125rem;
     text-transform: uppercase;
@@ -109,9 +108,18 @@
         display: block;
         min-width: 100%;
       }
+    }
+    img{
+      width: 25px;
+      filter: brightness(90%);
+      transition: .3s all;
+      &:hover{
+        filter: brightness(70%);
+      }
     }        
   }
   &__hamburger{
+    min-width: 70px;
     position: absolute;
     top: 0px;
     right: 0px;

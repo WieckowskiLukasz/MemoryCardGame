@@ -3,9 +3,17 @@ import './App.scss';
 import Game from './Game.tsx';
 import CookiesInfo from './layouts/CookiesInfo.tsx';
 import LoadingScreen from './layouts/LoadingScreen.tsx';
+import { AppContext, defaultObject } from './AppContext.tsx';
 
 function App() {
   const [openPageAnimation, setOpenPageAnimation] = useState<boolean>(true);
+  const [lang, setLang] = useState(defaultObject.lang);
+
+  const setLanguage = (lang: String) =>{
+    setLang(lang);
+    document.cookie = `lang=${lang}; path=/;`;
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setOpenPageAnimation(false);
@@ -19,9 +27,16 @@ function App() {
 
   return (
     <div className="App">
-      {displayOpenPageAnimation}
-      <Game/>
-      <CookiesInfo/>
+      <AppContext.Provider
+          value={{
+            lang: lang,
+            setLanguage: setLanguage,
+          }}
+      >
+        {displayOpenPageAnimation}
+        <Game/>
+        <CookiesInfo/>
+      </AppContext.Provider>
     </div>
   );
 }

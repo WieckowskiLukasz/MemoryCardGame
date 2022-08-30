@@ -32,32 +32,36 @@
     font-size: .8rem;
   }
   &__item{
-    min-width: 200px;
-    margin: 0 5px;
-    @include breakpointMax(1000px){
-      min-width: 90px;
-    }
-    @include breakpointMax(xxs){
-      min-width: 80px;
-      font-size: .8rem;
+    display: flex;
+    margin: 0 10px;
+    @include breakpointMax(xs){
       margin: 0 2px;
     }
-    &.moves{
-      min-width: 170px;
-      @include breakpointMax(1000px){
+  }
+  &__value{
+    margin-left: 5px;
+    min-width: 30px;
+    text-align: left;
+    @include breakpointMax(xs){
+      min-width: 10px;
+    }
+    &.stopwatch{
+      margin-left: 5px;
+      min-width: 120px;
+      @include breakpointMax(1300px){
         min-width: 80px;
       }
       @include breakpointMax(xs){
         min-width: 60px;
       }
     }
-    &.matched{
-      min-width: 170px;
-      @include breakpointMax(1000px){
-        min-width: 90px;
+    &.score{
+      min-width: 80px;
+      @include breakpointMax(1300px){
+        min-width: 50px;
       }
       @include breakpointMax(xs){
-        min-width: 70px;
+        min-width: 40px;
       }
     }
   }

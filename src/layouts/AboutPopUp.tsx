@@ -1,5 +1,6 @@
 import React from 'react';
 import {AboutPopUpInterface} from '../components/Interfaces';
+import Languages from '../layouts/Languages.tsx';
 
 export default function AboutPopUp({handleAbout}: AboutPopUpInterface) {
   
@@ -7,18 +8,18 @@ export default function AboutPopUp({handleAbout}: AboutPopUpInterface) {
     <div className='about-pop-up'>
       <div className='about-pop-up__container'>
         <div className="about-pop-up__header">
-          Game rules
+          <Languages text={'gameRulesHeader'}/>
         </div>
         <div className="about-pop-up__text">
-          You have five minutes to find all pairs of cards. The faster you find pairs and the fewer moves you make, the more points you get.
-          <br></br> 
-          Time begins to be measured when the first card is picked. Good luck!
+          <Languages text={'gameRulesText1'}/>
+          <br></br>
+          <Languages text={'gameRulesText2'}/>
         </div>
         <div className="about-pop-up__header">
-          About the game
+          <Languages text={'aboutTheGameHeader'}/>
         </div>
         <div className="about-pop-up__text">
-          The game was made with React, TypeScript and Saas. More information in the GitHub repository.
+          <Languages text={'aboutTheGameText'}/>
         </div>
         <div className="about-pop-up__buttons">
           <button 
@@ -29,7 +30,7 @@ export default function AboutPopUp({handleAbout}: AboutPopUpInterface) {
             target='_blank'
             rel='noreferrer'
             >
-              <i className="las la-code-branch"></i>Repository
+              <i className="las la-code-branch"></i><Languages text={'repositoryButton'}/>
             </a>
           </button>
           <button 
@@ -47,7 +48,7 @@ export default function AboutPopUp({handleAbout}: AboutPopUpInterface) {
             className='about-pop-up__button'
             onClick={()=> handleAbout(false)}
           >
-            <i className="las la-times"></i>Exit
+            <i className="las la-times"></i><Languages text={'exitButton'}/>
           </button>
         </div>
         <div className='about-pop-up__copyright'>
