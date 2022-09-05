@@ -41,10 +41,10 @@ export default function Languages({text}: LanguagesInterface) {
       exitButton: 'Exit',
       endGameHeader: 'Congratulations! You found all the pairs.',
       endTimeHeader: 'Unfortunately, the game time is up!',
-      yourScore: 'Twój wynik',
-      yourBestScore: 'Twój najlepszy wynik',
-      cookiesInfo: 'he website uses cookies to provide services in accordance with the Privacy Policy. You can define the conditions for storing or accessing cookies in your browser.',
-      acceptButton: 'Akceptuję',
+      yourScore: 'Your score',
+      yourBestScore: 'Your best score',
+      cookiesInfo: 'The website uses cookies to provide services in accordance with the Privacy Policy. You can define the conditions for storing or accessing cookies in your browser.',
+      acceptButton: 'Accept',
     },
   };
 

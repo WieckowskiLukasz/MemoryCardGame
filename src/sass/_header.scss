@@ -16,8 +16,7 @@
   @include breakpointMax(lg){
     height: 50px;
   }
-  @include breakpointMax(md){
-    height: 60px;
+  @include breakpointMax(1000px){
     background-image: none;
   }
   @include breakpointMax(sm){

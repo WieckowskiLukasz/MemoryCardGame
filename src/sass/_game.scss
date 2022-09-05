@@ -24,11 +24,10 @@
 	  background-repeat: no-repeat;
     transform: rotateX(15deg) translateY(-30px);
     position: relative;
+    min-height: 110% !important;
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
     justify-content: center;
-    height: 100% !important;
     @include breakpointMax(xxl){
       transform: rotateX(20deg) translateY(-30px);
     }
@@ -37,33 +36,77 @@
     }
   }
   &__card-container{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: center;
-    padding: 20px 160px;
+    width: 70%;
+    height: 70%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    padding: 30px;
     @include breakpointMax(xxl){
-      height: 1000px;
-      padding: 20px 60px;
+      width: 70%;
     }
     @include breakpointMax(xl){
-      padding: 20px 20px;
+      width: 80%;
+      height: 80%;
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
     }
-    @include breakpointMax(1000px){
-      width: 100% !important;
-      padding: 20px 80px;
+    @include breakpointMax(lg){
+      grid-column-gap: 7px;
+      grid-row-gap: 7px;
+      width: 75%;
+      height: 75%;
     }
-    @include breakpointMax(568px){
-      padding: 20px 20px;
-      width: 90% !important;
+    @include breakpointMax(md){
+      width: 80%;
+    }
+    @media screen and (max-width: 950px) and (orientation: landscape) {
+      width: 60%;
+    }
+    @media(orientation: portrait) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      width: 85%;
+    }
+    @media screen and (max-width: 950px) and (orientation: portrait) {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      width: 80%;
+      height: 80%;
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      padding: 20px;
+      width: 55%;
+      height: 80%;
     }
     @include breakpointMax(xs){
-      padding: 20px 30px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      height: 75%;
+      width: 65%;
     }
-    @media screen and (min-width: 600px) and (min-height: 800px) and (orientation: portrait) {
-      padding: 20px 60px;
+    @include breakpointMax(xxs){
+      width: 62%;
+    }
+    @include breakpointMax(320px){
+      width: 55%;
+    }
+    @include breakpointMax(xxxs){
+      width: 75%;
+    }
+    @media screen and (min-width: 1100px) and (max-height: 600px) and (orientation: landscape) {
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      height: 75%;
+      width: 85%;
     }
   }
   &__flip-card {
@@ -71,94 +114,13 @@
     position: relative;
     display: block;
     z-index: 2;
-    width: 190px;
-    height: 260px;
     border-radius: 4px;
-    margin: 10px 25px;
+    margin: 0;
     filter: brightness(100%) drop-shadow(6px -5px 2px rgba(0,0,0,0.3));
     perspective: 1000px;
     cursor: pointer;
     transition: .8s linear;
-    @include breakpointMax(xxl){
-      width: 150px;
-      height: 220px;
-      margin: 10px 20px;
-    }
-    @include breakpointMax(xl){
-      width: 105px;
-      height: 175px;
-      margin: 6px 8px;
-    }
-    @include breakpointMax(lg){
-      width: 120px;
-      height: 170px;
-      margin: 6px 10px;
-    }
-    @include breakpointMax(1200px){
-      width: 105px;
-      height: 155px;
-      margin: 6px 6px;
-    }
-    @media screen and (max-width: 1250px) and (max-height: 650px){
-      width: 100px;
-      height: 150px;
-      margin: 6px 6px;
-    }
-    @media screen and (max-width: 1250px) and (max-height: 500px){
-      width: 85px;
-      height: 135px;
-      margin: 6px 6px;
-    }
-    @media screen and (max-width: 1250px) and (max-height: 400px){
-      width: 70px;
-      height: 120px;
-      margin: 6px 6px;
-    }
-    @media screen and (max-width: 1000px) and (max-height: 500px){
-      width: 60px;
-      height: 100px;
-      margin: 5px 5px;
-    }
-    @include breakpointMax(md){
-      width: 53px;
-      height: 95px;
-      margin: 5px 5px;
-    }
-    @include breakpointMax(800px){
-      width: 45px;
-      height: 85px;
-      margin: 5px 5px;
-    }
-    @include breakpointMax(700px){
-      width: 45px;
-      height: 85px;
-      margin: 4px 3px;
-    }
-    @include breakpointMax(600px){
-      width: 38px;
-      height: 78px;
-      margin: 4px 3px;
-    }
-    @include breakpointMax(xs){
-      width: 50px;
-      height: 90px;
-      margin: 4px 4px;
-    }
-    @include breakpointMax(xxs){
-      width: 47px;
-      height: 87px;
-      margin: 4px 3px;
-    }
-    @include breakpointMax(330px){
-      width: 40px;
-      height: 80px;
-      margin: 4px 3px;
-    }
-    @media screen and (min-width: 600px) and (min-height: 800px) and (orientation: portrait) {
-      width: 90px;
-      height: 160px;
-      margin: 6px 5px;
-    }
+    aspect-ratio: 2/3; 
     &--guessed{
       filter: brightness(30%) drop-shadow(6px -5px 2px rgba(0,0,0,0.3))
     }
